@@ -3,6 +3,7 @@ using HPPADotNetCore.ConsoleApp.AdoDotNetExamples;
 using HPPADotNetCore.ConsoleApp.DapperExamples;
 using HPPADotNetCore.ConsoleApp.EFCoreExamples;
 using HPPADotNetCore.ConsoleApp.HttpClientExamples;
+using HPPADotNetCore.ConsoleApp.RestClientExamples;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
@@ -56,8 +57,11 @@ Console.WriteLine("Hello, World!");
 
 Console.WriteLine("Waiting Api");
 Console.ReadKey();
-HttpClientExample httpClientExample = new HttpClientExample();
-await httpClientExample.Run();
+RestClientExample restClientExample = new RestClientExample();
+await restClientExample.Run();
+
+//HttpClientExample httpClientExample = new HttpClientExample();
+//await httpClientExample.Run();
 
 Console.WriteLine("Press enter to continue");
 Console.ReadKey();
