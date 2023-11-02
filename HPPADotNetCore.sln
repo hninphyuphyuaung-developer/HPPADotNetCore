@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HPPADotNetCore.ConsoleApp",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HPPADotNetCore.RestApi", "HPPADotNetCore.RestApi\HPPADotNetCore.RestApi.csproj", "{F609F611-900F-47DA-B0C4-87C84A3061B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPPADotNetCore.MvcApp", "HPPADotNetCore.MvcApp\HPPADotNetCore.MvcApp.csproj", "{9B61786A-AC52-42E5-BA5A-8A6FEFD62C7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F609F611-900F-47DA-B0C4-87C84A3061B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F609F611-900F-47DA-B0C4-87C84A3061B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F609F611-900F-47DA-B0C4-87C84A3061B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B61786A-AC52-42E5-BA5A-8A6FEFD62C7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B61786A-AC52-42E5-BA5A-8A6FEFD62C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B61786A-AC52-42E5-BA5A-8A6FEFD62C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B61786A-AC52-42E5-BA5A-8A6FEFD62C7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
