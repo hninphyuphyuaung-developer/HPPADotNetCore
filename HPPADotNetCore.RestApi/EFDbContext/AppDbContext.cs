@@ -8,7 +8,7 @@ namespace HPPADotNetCore.RestApi.EFDbContext
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
-        public DbSet<FamilyDataModel> families { get; set; }
 
+        public DbSet<FamilyDataModel> Families { get; set; }    
     }
 }

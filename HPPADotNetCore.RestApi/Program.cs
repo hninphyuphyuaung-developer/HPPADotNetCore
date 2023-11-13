@@ -29,9 +29,9 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
     //opt.UseSqlServer(connectionStringBuilder.ConnectionString);
     string connectionString = builder.Configuration.GetConnectionString("DbConnection");
     opt.UseSqlServer(connectionString);
-});
-
-   
+},
+ServiceLifetime.Transient,
+ServiceLifetime.Transient);
 
 var app = builder.Build();
 

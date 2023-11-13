@@ -1,0 +1,40 @@
+﻿@model FamilyListResponseModel
+
+@{
+    int rowCount = 0;
+}
+
+<partial name="_ValidateMessage" />
+
+<p>Page Count : @Model.PageCount</p>
+<p>Page Row Count : @Model.PageRowCount</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Action</th>
+            <th scope="col">No.</th>
+            <th scope="col">Parent Name</th>
+            <th scope="col">Son Name</th>
+            <th scope="col">Daughter Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (FamilyDataModel item in Model.FamilyList)
+        {
+            <tr>
+                <td>
+                    <a href="/Family/Edit/@item.FamilyId" class="btn btn-warning">Edit</a>
+                    <a href="/Family/Delete/@item.FamilyId" class="btn btn-danger">Delete</a>
+                </td>
+                <th scope="row">@(++rowCount)</th>
+                <td>@item.ParentName</td>
+                <td>@item.SonName</td>
+                <td>@item.DaughterName</td>
+            </tr>
+        }
+        
+    </tbody>
+</table>
+
+
