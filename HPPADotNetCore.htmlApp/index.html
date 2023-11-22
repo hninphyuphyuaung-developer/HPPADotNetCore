@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hello World</h1>
+    <p id="test"></p>
+    <input type="text" id="test2" />
+    <button type="button" id="btnClick">Click</button>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      let studentObj = {
+        studentNo: 1,
+        studentName: "mg mg",
+      };
+
+      var jsonStr = JSON.stringify(studentObj);
+      console.log(jsonStr);
+      console.log(jsonStr.studentNo);
+
+      var jsonObj = JSON.parse(jsonStr);
+      console.log(jsonObj);
+      console.log(jsonObj.studentNo);
+
+      var c = "abc";
+      let d = 1;
+
+      var count = 0;
+
+      // document.getElementById('test').innerHTML="test test";
+      // document.getElementById('test2').value = "test test";
+
+      // $("#test").html("test test");
+      // $("#test2").val("test test 2");
+
+      // var a = $("#test").html();
+      // var b = $("#test2").html();
+
+      // console.log({ a, b });
+
+      // fun1();
+      // fun2();
+
+      //console.log(c);
+      console.log(fun2());
+
+      function fun1() {}
+
+      function fun2() {
+        return 5;
+      }
+
+      setTimeout(() => {
+        console.log(2);
+      }, 2000);
+
+      var interval1 = setInterval(() => {
+        // console.log(3);
+        count++;
+        $("#test2").val(count);
+      }, 4000);
+
+      $("#btnClick").click(function () {
+        clearInterval(interval1);
+      });
+    </script>
+  </body>
+</html>

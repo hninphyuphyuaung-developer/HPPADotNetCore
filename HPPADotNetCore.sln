@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPPADotNetCore2.MvcApp", "HPPADotNetCore2.MvcApp\HPPADotNetCore2.MvcApp.csproj", "{6D078A0D-B069-462E-8118-B4418723FCE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HPPADotNetCore.MvcApp", "HPPADotNetCore2.MvcApp\HPPADotNetCore.MvcApp.csproj", "{6D078A0D-B069-462E-8118-B4418723FCE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
