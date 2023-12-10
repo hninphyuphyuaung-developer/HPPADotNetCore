@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div id="loading" style="margin: 0px 20px 0px 20px">
+      <div id="id">
+        <h6>BlogId</h6>
+        <input type="text" class="form-control" id="txtTest" />
+      </div>
+      <div id="name">
+        <h6>Blog Name</h6>
+        <input type="text" class="form-control" id="txtTest2" />
+      </div>
+      <div id="author">
+        <h6>Blog Author</h6>
+        <input type="text" class="form-control" id="txtTest3" />
+      </div>
+      <div id="content" style="margin-bottom: 10px">
+        <h6>Blog Content</h6>
+        <input type="text" class="form-control" id="txtTest4" />
+      </div>
+      <button type="button" id="btnSave" class="btn btn-success">Save</button>
+      <button type="button" id="btnUpdate" class="btn btn-info">Update</button>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">No.</th>
+          <th scope="col">ID</th>
+          <th scope="col">BlogId</th>
+          <th scope="col">Name</th>
+          <th scope="col">Author</th>
+          <th scope="col">Content</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyTest"></tbody>
+    </table>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/notiflix@3.2.6/dist/notiflix-aio-3.2.6.min.js"
+      integrity="sha256-pXMqYvjzxYjuQ3+Iz0Zpw3Tk3BAoet8dOsODol/iqTI="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      Notiflix.Notify.init({
+        width: "280px",
+        position: "right-top",
+        distance: "10px",
+        opacity: 1,
+        borderRadius: "5px",
+        rtl: false,
+        timeout: 3000,
+        messageMaxLength: 110,
+        backOverlay: false,
+        backOverlayColor: "rgba(0,0,0,0.5)",
+        plainText: true,
+        showOnlyTheLastOne: true,
+        clickToClose: false,
+        pauseOnHover: true,
+        ID: "NotiflixNotify",
+        className: "notiflix-notify",
+        zindex: 4001,
+        fontFamily: "Quicksand",
+        fontSize: "13px",
+        cssAnimation: true,
+        cssAnimationDuration: 400,
+        cssAnimationStyle: "fade",
+        closeButton: false,
+        useIcon: true,
+        useFontAwesome: false,
+        fontAwesomeIconStyle: "basic",
+        fontAwesomeIconSize: "34px",
+        success: {
+          background: "#32c682",
+          textColor: "#fff",
+          childClassName: "notiflix-notify-success",
+          notiflixIconColor: "rgba(0,0,0,0.2)",
+          fontAwesomeClassName: "fas fa-check-circle",
+          fontAwesomeIconColor: "rgba(0,0,0,0.2)",
+          backOverlayColor: "rgba(50,198,130,0.2)",
+        },
+        failure: {
+          background: "#ff5549",
+          textColor: "#fff",
+          childClassName: "notiflix-notify-failure",
+          notiflixIconColor: "rgba(0,0,0,0.2)",
+          fontAwesomeClassName: "fas fa-times-circle",
+          fontAwesomeIconColor: "rgba(0,0,0,0.2)",
+          backOverlayColor: "rgba(255,85,73,0.2)",
+        },
+        warning: {
+          background: "#eebf31",
+          textColor: "#fff",
+          childClassName: "notiflix-notify-warning",
+          notiflixIconColor: "rgba(0,0,0,0.2)",
+          fontAwesomeClassName: "fas fa-exclamation-circle",
+          fontAwesomeIconColor: "rgba(0,0,0,0.2)",
+          backOverlayColor: "rgba(238,191,49,0.2)",
+        },
+        info: {
+          background: "#26c0d3",
+          textColor: "#fff",
+          childClassName: "notiflix-notify-info",
+          notiflixIconColor: "rgba(0,0,0,0.2)",
+          fontAwesomeClassName: "fas fa-info-circle",
+          fontAwesomeIconColor: "rgba(0,0,0,0.2)",
+          backOverlayColor: "rgba(38,192,211,0.2)",
+        },
+      });
+
+      var editId = "";
+      loadTable();
+
+      $("#btnSave").click(function (e) {
+        e.preventDefault();
+        if (editId !== "") {
+          validateMsg("You clicked in update case.");
+          return;
+        }
+        var test = $("#txtTest").val();
+        var test2 = $("#txtTest2").val();
+        var test3 = $("#txtTest3").val();
+        var test4 = $("#txtTest4").val();
+
+        if (test === null || test === undefined || test === "") {
+          validateMsg("Saving failed!! Please enter the text");
+          return;
+        }
+
+        // Notiflix.Loading.standard();
+
+        Notiflix.Block.standard("#loading");
+
+        var lst = getData();
+
+        const testObj = {
+          Id: uuidv4(),
+          BlogId: test,
+          Name: test2,
+          Author: test3,
+          Content: test4,
+        };
+
+        lst.push(testObj);
+
+        localStorage.setItem("Tbl_test", JSON.stringify(lst));
+
+        // $("#txtTest").val("");
+        // $("#txtTest").focus();
+        // $("#txtTest2").val("");
+        // $("#txtTest2").focus();
+        // $("#txtTest3").val("");
+        // $("#txtTest3").focus();
+        // $("#txtTest4").val("");
+        // $("#txtTest4").focus();
+        clickedSave();
+
+        setTimeout(() => {
+          // Notiflix.Loading.remove(1000);
+          Notiflix.Block.remove("#loading", 1000);
+          successMsg("Saving Successful.");
+          loadTable();
+        }, 1000);
+      });
+
+      function loadTable() {
+        // $("#tbodyTest").html("");
+        $("#tbodyTest").empty();
+
+        var lst = getData();
+
+        $.each(lst, function (key, value) {
+          console.log(
+            key +
+              ": " +
+              value.Id +
+              "," +
+              value.BlogId +
+              "," +
+              value.Name +
+              "," +
+              value.Author +
+              "," +
+              value.Content
+          );
+          let htmlRow = `
+                    <tr>
+                      <td>
+                        <button type="button" class="btn btn-warning" onclick="Edit(this)" data-id="${
+                          value.Id
+                        }">Edit</button>
+                        <button type="button" class="btn btn-danger" onclick="Delete(this)" data-id="${
+                          value.Id
+                        }">Delete</button>
+                      </td>
+                        <
+                      <td>${key + 1}</td>
+                      <td>${value.Id}</td>
+                      <td>${value.BlogId}</td>
+                      <td>${value.Name}</td>
+                      <td>${value.Author}</td>
+                      <td>${value.Content}</td>
+                    </tr>
+                    `;
+
+          $("#tbodyTest").append(htmlRow);
+        });
+      }
+
+      function uuidv4() {
+        return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, (c) =>
+          (
+            c ^
+            (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+          ).toString(16)
+        );
+      }
+
+      function Edit(ele) {
+        // let id = $(ele).data("id-item");
+        let id = $(ele).data("id");
+        // console.log(id);
+        var lst = getData();
+
+        const result = lst.filter(function (x) {
+          return x.Id == id;
+        });
+
+        console.log(result[0]);
+
+        var item = result[0];
+
+        $("#txtTest").val(item.BlogId);
+        $("#txtTest2").val(item.Name);
+        $("#txtTest3").val(item.Author);
+        $("#txtTest4").val(item.Content);
+        editId = item.Id;
+      }
+
+      $("#btnUpdate").click(function () {
+        if (editId === "") return;
+
+        var lst = getData();
+        let index = lst.findIndex((x) => x.Id === editId);
+        console.log(`index ${index}`);
+
+        lst[index].BlogId = $("#txtTest").val();
+        console.log(lst[index].BlogId);
+        lst[index].BlogId = $("#txtTest").val();
+        lst[index].Name = $("#txtTest2").val();
+        lst[index].Author = $("#txtTest3").val();
+        lst[index].Content = $("#txtTest4").val();
+
+        editId = "";
+        setLocal(lst);
+        // $("#txtTest").val("");
+        // $("#txtTest").focus();
+        clickedSave();
+        loadTable();
+        successMsg("Updating Successful.");
+      });
+
+      function Delete(ele) {
+        confirmMsg("Are you sure want to delete?").then((result) => {
+          if (!result) return;
+          let id = $(ele).data("id");
+          var lst = getData();
+          let index = lst.findIndex((x) => x.Id === id);
+          lst.splice(index, 1);
+
+          setLocal(lst);
+          loadTable();
+          successMsg("Deleting Successful.");
+        });
+      }
+
+      function getData() {
+        var lst = [];
+        var jsonStr = localStorage.getItem("Tbl_test");
+        if (!(jsonStr === undefined || jsonStr === null || jsonStr === "")) {
+          lst = JSON.parse(jsonStr);
+        }
+        return lst;
+      }
+
+      function setLocal(lst) {
+        localStorage.setItem("Tbl_test", JSON.stringify(lst));
+      }
+
+      function clickedSave() {
+        $("#txtTest").val("");
+        $("#txtTest").focus();
+        $("#txtTest2").val("");
+        $("#txtTest2").focus();
+        $("#txtTest3").val("");
+        $("#txtTest3").focus();
+        $("#txtTest4").val("");
+        $("#txtTest4").focus();
+      }
+
+      function successMsg(message) {
+        Notiflix.Notify.success(message);
+      }
+
+      function validateMsg(message) {
+        Notiflix.Notify.warning(message);
+      }
+
+      function confirmMsg(message) {
+        return new Promise(function (resolve, reject) {
+          Notiflix.Confirm.show(
+            "Confirm",
+            message,
+            "Yes",
+            "No",
+            function okCb() {
+              resolve(true);
+            },
+            function cancelCb() {
+              resolve(false);
+            }
+          );
+        });
+      }
+    </script>
+  </body>
+</html>

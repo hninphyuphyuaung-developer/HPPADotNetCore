@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="plugins/datepicker/datepicker.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css"
+      integrity="sha512-8vq2g5nHE062j3xor4XxPeZiPjmRDh6wlufQlfC6pdQ/9urJkU07NM0tEREeymP++NczacJ/Q59ul+/K2eYvcg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+  </head>
+  <body>
+    <input data-toggle="datepicker" />
+    <input type="text" id="txtDate" />
+    <br />
+    <input type="time" id="txtTime" />
+    <input type="submit" />
+
+    <!-- <form>
+      <input type="radio" id="apple" name="fav_language" value="Apple" />
+      <label for="apple">Apple</label><br />
+      <input type="radio" id="orange" name="fav_language" value="Orange" />
+      <label for="orange">Orange</label><br />
+      <input type="radio" id="banana" name="fav_language" value="Banana" />
+      <label for="banana">Banana</label>
+    </form> -->
+
+    <div class="icheck-danger">
+      <input type="radio" id="someRadioId1" name="someGroupName" />
+      <label for="someRadioId1">Option 1</label>
+    </div>
+    <div class="icheck-danger">
+      <input type="radio" id="someRadioId2" name="someGroupName" />
+      <label for="someRadioId2">Option 2</label>
+    </div>
+
+    <br />
+    <!-- <form>
+      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+      <label for="vehicle1"> I have a bike</label><br />
+      <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" />
+      <label for="vehicle2"> I have a car</label><br />
+      <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" />
+      <label for="vehicle3"> I have a boat</label>
+    </form> -->
+    <div class="icheck-turquoise">
+      <input type="checkbox" id="fruit" />
+      <label for="fruit">Apple</label>
+    </div>
+    <div class="icheck-turquoise">
+      <input type="checkbox" id="fruit1" />
+      <label for="fruit1">Orange</label>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="plugins/datepicker/datepicker.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script>
+      $('[data-toggle="datepicker"]').datepicker();
+      $("#txtDate").datepicker({
+        autoHide: true,
+        format: "dd-mm-yyyy",
+      });
+
+      //   Toastify({
+      //     text: "This is a toast",
+      //     duration: 3000,
+      //   }).showToast();
+
+      Toastify({
+        text: "This is a toast",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        onClick: function () {}, // Callback after click
+      }).showToast();
+    </script>
+  </body>
+</html>
