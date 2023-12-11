@@ -1,9 +1,51 @@
-﻿@{
-    Layout = "_MainLayout";
+﻿@model List<FamilyDataModel>
+@{
+    // Layout = "_MainLayout";
     ViewData["Title"] = "Family Index";
+    int count = 0;
+    string message = null;
+    Boolean isSuccess = false;
+    if (TempData["Message"] != null)
+    {
+        message = TempData["Message"].ToString();
+        isSuccess = Convert.ToBoolean(TempData["isSuccess"]);
+    }
 }
 
-<p>Hello World</p>
+@* <p>Hello World</p> *@
+
+<h4>
+     Family List<a href="/family/create" class="btn btn-success">Create</a>
+</h4>
+
+@if(message is not null)
+{
+    <div class="alert alert-@(isSuccess? "success" : "danger")" role="alert">
+        @message
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Parent</th>
+            <th scope="col">Son</th>
+            <th scope="col">Daughter</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <th scope="row">@(++count)</th>
+                <td>@item.ParentName</td>
+                <td>@item.SonName</td>
+                <td>@item.DaughterName</td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 @section scripts{
     <script>
