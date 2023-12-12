@@ -29,6 +29,7 @@
     <thead>
         <tr>
             <th scope="col">#</th>
+            <th scope="col">#</th>
             <th scope="col">Parent</th>
             <th scope="col">Son</th>
             <th scope="col">Daughter</th>
@@ -38,6 +39,14 @@
         @foreach(var item in Model)
         {
             <tr>
+                <th scope="row">
+                    <a href="/family/edit/@item.FamilyId" class="btn btn-warning">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                    <a href="/family/delete/@item.FamilyId" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </th>
                 <th scope="row">@(++count)</th>
                 <td>@item.ParentName</td>
                 <td>@item.SonName</td>
