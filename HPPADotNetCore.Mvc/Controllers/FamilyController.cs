@@ -19,7 +19,36 @@ namespace HPPADotNetCore.MvcApp.Controllers
         public IActionResult FamilyIndex()
         {
             List<FamilyDataModel> lst = _context.families.ToList();
-            return View("FamilyIndex",lst);
+            return View("FamilyIndex", lst);
+        }
+
+        [ActionName("List")]
+        public async Task<IActionResult> FamilyList(int pageNo = 1 , int pageSize = 10)
+        {
+            FamilyDataResponseModel model = new FamilyDataResponseModel();
+            List<FamilyDataModel> lst = _context.families
+                .Skip((pageNo - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            int rowCount = await _context.families.CountAsync();
+            int pageCount = rowCount / pageSize;
+            if(rowCount % pageSize > 0)
+            {
+                pageCount++;
+            }
+
+            model.Families = lst;
+            //model.pageSetting = new PageSettingModel
+            //{
+            //    PageCount = pageCount,
+            //    PageNo = pageNo,
+            //    PageSize = pageSize
+            //};
+
+            model.pageSetting = new PageSettingModel(pageNo, pageSize,pageCount);
+
+            return View("FamilyList", model);
         }
 
         [ActionName("Create")]

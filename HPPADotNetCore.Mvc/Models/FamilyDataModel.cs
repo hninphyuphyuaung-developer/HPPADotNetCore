@@ -24,4 +24,28 @@ namespace HPPADotNetCore.MvcApp.Models
         [Column("DaughterName")]
         public string? DaughterName { get; set;}
     }
+
+    public class FamilyDataResponseModel
+    {
+        public PageSettingModel pageSetting { get; set; }
+        public List<FamilyDataModel> Families { get; set; }
+    }
+
+    public class PageSettingModel
+    {
+        public PageSettingModel()
+        {
+        }
+
+        public PageSettingModel(int pageNo ,int pageSize ,int pageCount)
+        {
+            PageNo = pageNo;
+            PageSize = pageSize;
+            PageCount = pageCount;
+        }
+
+        public int PageNo { get; set; }
+        public int PageSize { get; set; }
+        public int PageCount { get; set; }
+    }
 }

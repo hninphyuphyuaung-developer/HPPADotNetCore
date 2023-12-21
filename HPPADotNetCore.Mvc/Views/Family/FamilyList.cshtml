@@ -1,0 +1,84 @@
+﻿@model FamilyDataResponseModel
+@{
+    // Layout = "_MainLayout";
+    ViewData["Title"] = "Family Index";
+    string message = null;
+    Boolean isSuccess = false;
+    if (TempData["Message"] != null)
+    {
+        message = TempData["Message"].ToString();
+        isSuccess = Convert.ToBoolean(TempData["isSuccess"]);
+    }
+    int pageNo = Model.pageSetting.PageNo;
+    int pageSize = Model.pageSetting.PageSize;
+    int pageCount = Model.pageSetting.PageCount;
+    int count = (pageNo - 1) * pageSize;
+}
+
+@* <p>Hello World</p> *@
+
+<h4>
+     Family List<a href="/family/create" class="btn btn-success">Create</a>
+</h4>
+
+@if(message is not null)
+{
+    <div class="alert alert-@(isSuccess? "success" : "danger")" role="alert">
+        @message
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">#</th>
+            <th scope="col">Parent</th>
+            <th scope="col">Son</th>
+            <th scope="col">Daughter</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Families)
+        {
+            <tr>
+                <th scope="row">
+                    <a href="/family/edit/@item.FamilyId" class="btn btn-warning">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                    <a href="/family/delete/@item.FamilyId" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </th>
+                <th scope="row">@(++count)</th>
+                <td>@item.ParentName</td>
+                <td>@item.SonName</td>
+                <td>@item.DaughterName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<nav aria-label="...">
+    <ul class="pagination">
+        @for(int i = 1; i <= pageCount; i++)
+        {
+            if (pageNo == i)
+            {
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="#">@i</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item"><a class="page-link" href="/family/list?pageNo=@i&pageSize=@pageSize">@i</a></li>
+            }
+        }
+    </ul>
+</nav>
+
+@section scripts{
+    <script>
+        console.log("test");
+    </script>
+}
