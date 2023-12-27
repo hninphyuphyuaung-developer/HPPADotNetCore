@@ -43,7 +43,13 @@ namespace HPPADotNetCore.MvcApp.Controllers
                         new double[] {25.4, 3},
                         new double[] { 19, 2 },
                         new double[] {10.9, 1},
-                        new double[] {13.6, 3.2}
+                        new double[] {13.6, 3.2},
+                        new double[] {21.7, 2},
+                        new double[] {25.4, 3},
+                        new double[] {19, 2},
+                        new double[] {10.9, 1},
+                        new double[] {13.6, 3.2},
+                        new double[] {10.9, 7.4}
                     }},
                     new ApexChartScatterChartModel{name = "SAMPLE B" ,data = new double[][]
                     { new double[] {36.4, 13.4},
@@ -51,7 +57,13 @@ namespace HPPADotNetCore.MvcApp.Controllers
                         new double[] { 5.4, 8 },
                         new double[] { 9, 17    },
                         new double[] { 1.9, 4 },
-                        new double[] { 3.6, 12.2 }
+                        new double[] { 3.6, 12.2 },
+                        new double[] { 1.4, 7 },
+                        new double[] { 6.4, 8.8 },
+                        new double[] { 3.6, 4.3 },
+                        new double[] { 1.6, 10 },
+                        new double[] { 9.9, 2 },
+                        new double[] { 7.1, 15}
                     }},
                     new ApexChartScatterChartModel{name = "SAMPLE C" ,data = new double[][]
                     { new double[] { 23, 2 },
@@ -59,7 +71,13 @@ namespace HPPADotNetCore.MvcApp.Controllers
                         new double[] { 28, 4    },
                         new double[] { 27.1, 0.3 },
                         new double[] {16.4, 4},
-                        new double[] { 13.6, 0 }
+                        new double[] { 13.6, 0 },
+                        new double[] {6.4, 8.8},
+                        new double[] {28, 4},
+                        new double[] {27.1, 0.3},
+                        new double[] {13.6, 0},
+                        new double[] {19, 5},
+                        new double[] { 22.4, 3 }
                     }}
                 }
             }; 
