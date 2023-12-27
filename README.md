@@ -1,3 +1,9 @@
+Chart [done]
+https://apexcharts.com/angular-chart-demos/
+https://www.chartjs.org/docs/latest/samples/information.html
+https://canvasjs.com/javascript-charts/
+https://www.highcharts.com/demo
+
 sweetalert [done]
 https://sweetalert2.github.io/
 
