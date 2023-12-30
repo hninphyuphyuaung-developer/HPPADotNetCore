@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/HPPADotNetCore.MvcApp.styles.css" asp-append-version="true" />
     @await RenderSectionAsync("style", required: false)
-
 </head>
 <body>
     <header>
@@ -47,14 +46,18 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/chartjs/piechart">Pie Chart</a></li>
+                                <li><a class="dropdown-item" href="/chartjs/horizontalbarchart">Horizontal Bar Chart</a></li>
+                                <li><a class="dropdown-item" href="/chartjs/multiaxislinechart">Multi Axis Line Chart</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Chart Js
+                                Canvas Js
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/canvasjs/piechart">Pie Chart</a></li>
+                                <li><a class="dropdown-item" href="/canvasjs/LineChartWithAxis">Line Chart With Axis</a></li>
+                                <li><a class="dropdown-item" href="/canvasjs/errorbarchart">Error Bar Chart</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -63,6 +66,8 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/highcharts/piechart">Pie Chart</a></li>
+                                <li><a class="dropdown-item" href="/highcharts/areasplinechart">Area Spline Chart</a></li>
+                                <li><a class="dropdown-item" href="/highcharts/chart3dbubbleschart">3D Bubbles Chart</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -91,6 +96,7 @@
     <script src="https://code.highcharts.com/11.2.0/highcharts.js"></script>
     <script src="https://code.highcharts.com/11.2.0/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/11.2.0/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.src.js"></script>
 
     @* <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> *@
     @await RenderSectionAsync("scripts", required: false)
