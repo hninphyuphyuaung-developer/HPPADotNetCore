@@ -3,6 +3,7 @@ using HPPADotNetCore.ConsoleApp.AdoDotNetExamples;
 using HPPADotNetCore.ConsoleApp.DapperExamples;
 using HPPADotNetCore.ConsoleApp.EFCoreExamples;
 using HPPADotNetCore.ConsoleApp.HttpClientExamples;
+using HPPADotNetCore.ConsoleApp.HttpClientExamples1;
 using HPPADotNetCore.ConsoleApp.RefitExamples;
 using HPPADotNetCore.ConsoleApp.RestClientExamples;
 using Microsoft.Data.SqlClient;
@@ -61,8 +62,11 @@ Console.ReadKey();
 //RestClientExample restClientExample = new RestClientExample();
 //await restClientExample.Run();
 
-RefitExample refitExample = new RefitExample();
-await refitExample.Run();
+//RefitExample refitExample = new RefitExample();
+//await refitExample.Run();
+
+HttpClientExample1 httpClientExample1 = new HttpClientExample1();
+await httpClientExample1.Run();
 
 //HttpClientExample httpClientExample = new HttpClientExample();
 //await httpClientExample.Run();

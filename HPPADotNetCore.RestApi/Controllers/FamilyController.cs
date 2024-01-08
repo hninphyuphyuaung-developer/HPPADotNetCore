@@ -20,7 +20,7 @@ namespace HPPADotNetCore.RestApi.Controllers
         [HttpGet]
         public IActionResult GetFamily()
         {
-            var lst = _appDbContext.families.ToList();
+            var lst = _appDbContext.Families.ToList();
             return Ok(lst);
         }
 
@@ -28,7 +28,7 @@ namespace HPPADotNetCore.RestApi.Controllers
         public IActionResult GetFamily(int id)
         {
             FamilyResponseModel model = new FamilyResponseModel();
-            var item = _appDbContext.families.FirstOrDefault(x => x.FamilyId == id);
+            var item = _appDbContext.Families.FirstOrDefault(x => x.FamilyId == id);
             if (item == null)
             {
                 model.IsSuccess = false;
@@ -45,7 +45,7 @@ namespace HPPADotNetCore.RestApi.Controllers
         public IActionResult CreateFamily([FromBody] FamilyDataModel family)
         {
             FamilyResponseModel model = new FamilyResponseModel();
-            _appDbContext.families.Add(family); 
+            _appDbContext.Families.Add(family); 
             var result = _appDbContext.SaveChanges();
             string message = result > 0 ? "Saving successful." : "Saving failed.";
 
@@ -59,7 +59,7 @@ namespace HPPADotNetCore.RestApi.Controllers
         public IActionResult UpdateFamily(int id , [FromBody] FamilyDataModel family)
         {
             FamilyResponseModel model = new FamilyResponseModel();
-            var item = _appDbContext.families.FirstOrDefault(x => x.FamilyId == id);
+            var item = _appDbContext.Families.FirstOrDefault(x => x.FamilyId == id);
             if (item == null)
             {
                 return NotFound("No data found");
@@ -80,7 +80,7 @@ namespace HPPADotNetCore.RestApi.Controllers
         public IActionResult PatchFamily(int id, [FromBody] FamilyDataModel family)
         {
             FamilyResponseModel model = new FamilyResponseModel();
-            var item = _appDbContext.families.FirstOrDefault(x => x.FamilyId == id);
+            var item = _appDbContext.Families.FirstOrDefault(x => x.FamilyId == id);
             if (item == null)
             {
                 return NotFound("No data found");
@@ -111,13 +111,13 @@ namespace HPPADotNetCore.RestApi.Controllers
         public IActionResult DeleteFamily(int id)
         {
             FamilyResponseModel model = new FamilyResponseModel();
-            var item = _appDbContext.families.FirstOrDefault(x => x.FamilyId == id);
+            var item = _appDbContext.Families.FirstOrDefault(x => x.FamilyId == id);
             if (item is null)
             {
                 return NotFound("No data found.");
             }
 
-            _appDbContext.families.Remove(item);
+            _appDbContext.Families.Remove(item);
             var result = _appDbContext.SaveChanges();
             string message = result > 0 ? "Deleting Successful." : "Deleting Failed.";
 

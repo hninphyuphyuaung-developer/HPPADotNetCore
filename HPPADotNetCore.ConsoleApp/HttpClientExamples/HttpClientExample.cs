@@ -14,7 +14,7 @@ namespace HPPADotNetCore.ConsoleApp.HttpClientExamples
     {
         public async Task Run()
         {
-            //await Read();
+            await Read();
             //await Edit(40);
             //await Delete(30);
             //await Create("name1", "name2", "name3");
