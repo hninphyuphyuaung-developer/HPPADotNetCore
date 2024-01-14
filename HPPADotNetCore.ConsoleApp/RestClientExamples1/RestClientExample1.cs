@@ -1,5 +1,6 @@
 ﻿using HPPADotNetCore.ConsoleApp.Models;
 using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,26 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace HPPADotNetCore.ConsoleApp.HttpClientExamples1
+namespace HPPADotNetCore.ConsoleApp.RestClientExamples1
 {
-    public class HttpClientExample1
+	public class RestClientExample1
     {
         public async Task Run()
         {
-            //await Read();
-            //await Edit(1018);
+            await Read();
+            //await Edit(1048);
             //await Create("test1", "test2", "test3");
-            //await Update(1003, "test1", "test2", "test3");
-            //await Delete(1001);
+            //await Update(2047, "U Ba", "Mg Mg", "Aye");
+            //await Delete(2047);
         }
 
-		private async Task Read()
+        private async Task Read()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7122/api/family");
+            RestRequest request = new RestRequest("https://localhost:7122/api/family", Method.Get);
+            RestClient client = new RestClient();
+            //var response = await client.GetAsync(request);
+            var response = await client.ExecuteAsync(request);
             if (response.IsSuccessStatusCode)
             {
-                string jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = response.Content!;
                 List<FamilyDataModel> lst = JsonConvert.DeserializeObject<List<FamilyDataModel>>(jsonStr);
                 foreach (FamilyDataModel item in lst)
                 {
@@ -41,13 +44,14 @@ namespace HPPADotNetCore.ConsoleApp.HttpClientExamples1
 
 		private async Task Edit(int id)
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync($"https://localhost:7122/api/family/{id}");
+			RestRequest request = new RestRequest($"https://localhost:7122/api/family/{id}", Method.Get);
+			RestClient client = new RestClient();
+			var response = await client.ExecuteAsync(request);
             if (response.IsSuccessStatusCode)
             {
-                string jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = response.Content!;
                 var model = JsonConvert.DeserializeObject<FamilyResponseModel>(jsonStr);
-                var item = model.Data;
+                var item = model!.Data;
                     Console.WriteLine(item.FamilyId);
                     Console.WriteLine(item.ParentName);
                     Console.WriteLine(item.SonName);
@@ -56,9 +60,9 @@ namespace HPPADotNetCore.ConsoleApp.HttpClientExamples1
             }
             else
             {
-                string jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = response.Content!;
                 var model = JsonConvert.DeserializeObject<FamilyResponseModel>(jsonStr);
-                Console.WriteLine(model.Message);
+                Console.WriteLine(model!.Message);
             }
         }
 
@@ -70,16 +74,15 @@ namespace HPPADotNetCore.ConsoleApp.HttpClientExamples1
                 SonName = son,
                 DaughterName = daughter
             };
-            var jsonFamily = JsonConvert.SerializeObject(family);
-            HttpContent httpContent = new StringContent(jsonFamily, Encoding.UTF8, Application.Json);
-
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.PostAsync("https://localhost:7122/api/family", httpContent);
+			RestRequest request = new RestRequest("https://localhost:7122/api/family", Method.Post);
+            request.AddJsonBody(family);
+			RestClient client = new RestClient();
+			var response = await client.ExecuteAsync(request);
             if (response.IsSuccessStatusCode)
             {
-                string jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = response.Content!;
                 var model = JsonConvert.DeserializeObject<FamilyResponseModel>(jsonStr);
-                Console.WriteLine(model.Message);
+                Console.WriteLine(model!.Message);
             }
         }
 
@@ -91,35 +94,35 @@ namespace HPPADotNetCore.ConsoleApp.HttpClientExamples1
                 SonName = son,
                 DaughterName = daughter
             };
-            var jsonFamily = JsonConvert.SerializeObject(family);
-            HttpContent httpContent = new StringContent(jsonFamily, Encoding.UTF8, Application.Json);
-
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.PutAsync($"https://localhost:7122/api/family/{id}", httpContent);
+			RestRequest request = new RestRequest($"https://localhost:7122/api/family/{id}", Method.Put);
+            request.AddJsonBody(family);
+			RestClient client = new RestClient();
+			var response = await client.ExecuteAsync(request);
             if (response.IsSuccessStatusCode)
             {
-                string jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = response.Content!;
                 var model = JsonConvert.DeserializeObject<FamilyResponseModel>(jsonStr);
-                Console.WriteLine(model.Message);
+                Console.WriteLine(model!.Message);
             }
-            else
-            {
-                string jsonStr = await response.Content.ReadAsStringAsync();
-                var model = JsonConvert.DeserializeObject<FamilyResponseModel>(jsonStr);
-                Console.WriteLine(model.Message);
-            }
+            //else
+            //{
+            //    string jsonStr = response.Content!;
+            //    var model = JsonConvert.DeserializeObject<FamilyResponseModel>(jsonStr);
+            //    Console.WriteLine(model!.Message);
+            //}
         }
 
 		private async Task Delete(int id)
-        {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.DeleteAsync($"https://localhost:7122/api/family/{id}");
-            if (response.IsSuccessStatusCode)
+		{
+			RestRequest request = new RestRequest($"https://localhost:7122/api/family/{id}", Method.Delete);
+			RestClient client = new RestClient();
+			var response = await client.ExecuteAsync(request);
+			if (response.IsSuccessStatusCode)
             {
-                string jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = response.Content!;
                 var model = JsonConvert.DeserializeObject<FamilyResponseModel>(jsonStr);
-                Console.WriteLine(model.Message);
+                Console.WriteLine(model!.Message);
             }
-        }
-    }
+		}
+	}
 }

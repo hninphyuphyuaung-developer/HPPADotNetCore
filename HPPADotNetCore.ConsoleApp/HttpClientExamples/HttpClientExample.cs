@@ -21,7 +21,8 @@ namespace HPPADotNetCore.ConsoleApp.HttpClientExamples
             //await Updateput(30, "Tom", "Jack", "Mia");
             //await Updatepatch(37, null, null, "Dede");
         }
-        public async Task Read()
+
+        private async Task Read()
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync("https://localhost:7122/api/FamilyAdoDotNet");
@@ -43,7 +44,7 @@ namespace HPPADotNetCore.ConsoleApp.HttpClientExamples
             }
         }
 
-        public async Task Edit(int id)
+		private async Task Edit(int id)
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync($"https://localhost:7122/api/FamilyAdoDotNet/{id}");
@@ -74,7 +75,7 @@ namespace HPPADotNetCore.ConsoleApp.HttpClientExamples
             }
         }
 
-        public async Task Create(string parent, string son, string daughter)
+		private async Task Create(string parent, string son, string daughter)
         {
             FamilyDataModel family = new FamilyDataModel
             {
@@ -97,7 +98,7 @@ namespace HPPADotNetCore.ConsoleApp.HttpClientExamples
             }
         }
 
-        public async Task Updateput(int id, string parent, string son, string daughter)
+		private async Task Updateput(int id, string parent, string son, string daughter)
         {
             FamilyDataModel family = new FamilyDataModel
             {
@@ -127,7 +128,7 @@ namespace HPPADotNetCore.ConsoleApp.HttpClientExamples
             }
         }
 
-        public async Task Updatepatch(int id, string parent, string son, string daughter)
+		private async Task Updatepatch(int id, string parent, string son, string daughter)
         {
             FamilyDataModel family = new FamilyDataModel
             {
@@ -150,7 +151,7 @@ namespace HPPADotNetCore.ConsoleApp.HttpClientExamples
             }
         }
 
-        public async Task Delete(int id)
+		private async Task Delete(int id)
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.DeleteAsync($"https://localhost:7122/api/FamilyAdoDotNet/{id}");
