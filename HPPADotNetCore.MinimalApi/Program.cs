@@ -1,8 +1,15 @@
 using HPPADotNetCore.MinimalApi.EFDbContext;
 using HPPADotNetCore.MinimalApi.Features.Family;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.ConfigureHttpJsonOptions(opt =>
+{
+    opt.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+    opt.SerializerOptions.PropertyNamingPolicy = null;
+});
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
