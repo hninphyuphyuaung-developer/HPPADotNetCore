@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Refit;
+using RestSharp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,12 @@ builder.Services.AddScoped<HttpClient>(x => new HttpClient
 {
     BaseAddress = new Uri(builder.Configuration.GetSection("RestApiUrl").Value!)
 });
+
+#endregion
+
+#region RestClient
+
+builder.Services.AddScoped(x => new RestClient(builder.Configuration.GetSection("RestApiUrl").Value!));
 
 #endregion
 
