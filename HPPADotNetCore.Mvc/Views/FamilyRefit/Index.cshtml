@@ -1,0 +1,27 @@
+﻿@model List<FamilyDataModel>
+@{
+    int count = 0;
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">#</th>
+            <th scope="col">Parent</th>
+            <th scope="col">Son</th>
+            <th scope="col">Daughter</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@(++count)</th>
+                <td>@item.ParentName</td>
+                <td>@item.SonName</td>
+                <td>@item.DaughterName</td>
+            </tr>
+        }
+    </tbody>
+</table>

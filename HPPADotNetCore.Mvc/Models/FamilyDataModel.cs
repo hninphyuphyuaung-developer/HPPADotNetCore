@@ -25,6 +25,22 @@ namespace HPPADotNetCore.MvcApp.Models
         public string? DaughterName { get; set;}
     }
 
+	public class FamilyResponseModel
+	{
+		public bool IsSuccess { get; set; }
+
+		public string Message { get; set; }
+
+		public FamilyDataModel Data { get; set; }
+	}
+
+    public class FamilyListResponseModel
+    {
+        public bool IsSuccess { get; set; }
+        public string Message { get; set; }
+        public List<FamilyDataModel> Data { get; set; }
+    }
+
     public class FamilyDataResponseModel
     {
         public PageSettingModel pageSetting { get; set; }
