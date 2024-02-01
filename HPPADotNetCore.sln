@@ -18,7 +18,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HPPADotNetCore.ThemeMvcApp"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HPPADotNetCore.AtmWebApp", "HPPADotNetCore.AtmWebApp\HPPADotNetCore.AtmWebApp.csproj", "{22A75A07-0DF1-4B67-92A9-503419904874}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPPADotNetCore.MinimalApi", "HPPADotNetCore.MinimalApi\HPPADotNetCore.MinimalApi.csproj", "{E8FC8404-16EE-40D8-9828-F094F5B059E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HPPADotNetCore.MinimalApi", "HPPADotNetCore.MinimalApi\HPPADotNetCore.MinimalApi.csproj", "{E8FC8404-16EE-40D8-9828-F094F5B059E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPPADotNetCore.DbFirstCommandApp", "HPPADotNetCore.DbFirstCommandApp\HPPADotNetCore.DbFirstCommandApp.csproj", "{6AC75A4B-1B7C-4CE3-82F5-753DEE64B352}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{E8FC8404-16EE-40D8-9828-F094F5B059E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8FC8404-16EE-40D8-9828-F094F5B059E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8FC8404-16EE-40D8-9828-F094F5B059E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AC75A4B-1B7C-4CE3-82F5-753DEE64B352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AC75A4B-1B7C-4CE3-82F5-753DEE64B352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AC75A4B-1B7C-4CE3-82F5-753DEE64B352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AC75A4B-1B7C-4CE3-82F5-753DEE64B352}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,3 +1,8 @@
+PM> 
+Scaffold-DbContext "Server=.;Database=HppaDotNetCore;User ID=sa;Password=sa@123;Trusted_Connection=True;Trust Server Certificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context AppDbContext -Tables Tbl_Family
+
+https://www.entityframeworktutorial.net/efcore/create-model-for-existing-database-in-ef-core.aspx
+
 ThemeMvc
 https://themeforest.net/category/site-templates/admin-templates
 
